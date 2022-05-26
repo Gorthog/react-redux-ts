@@ -26,10 +26,14 @@ export const searchRepositories = (term: string) => {
         type: ActionType.SEARCH_REPOSITORIES_SUCCESS,
         payload: names,
       });
-    } catch (err: any) {
+    } catch (err) {
+      let errorMessage;
+      if (err instanceof Error) {
+        errorMessage = err.message;
+      } else errorMessage = JSON.stringify(err);
       dispatch({
         type: ActionType.SERRCH_REPOSITORIES_ERROR,
-        payload: err.message,
+        payload: errorMessage,
       });
     }
   };

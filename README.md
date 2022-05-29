@@ -11,3 +11,4 @@ TODO:
 
 1. Add memoization.
 2. Migrate to RTK query
+3. Add data normalization

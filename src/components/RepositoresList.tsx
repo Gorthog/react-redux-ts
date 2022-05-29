@@ -1,18 +1,18 @@
 import { useState } from "react";
-import { useActions } from "../state/hooks/useActions";
-import { useTypedSelector } from "../state/hooks/useTypedSelector";
+import { useAppDispatch, useAppSelector } from "../state/hooks/hooks";
+import { searchRepositories } from "../state/slices/RepositorySlice";
 
 const RepositoriesList: React.FC = () => {
   const [term, setTerm] = useState("");
-  const { searchRepositories } = useActions();
-  const { data, error, loading } = useTypedSelector(
+  const dispatch = useAppDispatch();
+  const { data, error, loading } = useAppSelector(
     (state) => state.repositories
   );
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
 
-    searchRepositories(term);
+    dispatch(searchRepositories(term));
   };
 
   return (

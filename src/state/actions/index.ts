@@ -10,7 +10,7 @@ interface SearchReporitoriesSuccessAction {
 }
 
 interface SearchRepositoresErrorAction {
-  type: ActionType.SERRCH_REPOSITORIES_ERROR;
+  type: ActionType.SEARCH_REPOSITORIES_ERROR;
   payload: string;
 }
 

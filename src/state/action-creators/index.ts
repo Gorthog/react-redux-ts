@@ -32,7 +32,7 @@ export const searchRepositories = (term: string) => {
         errorMessage = err.message;
       } else errorMessage = JSON.stringify(err);
       dispatch({
-        type: ActionType.SERRCH_REPOSITORIES_ERROR,
+        type: ActionType.SEARCH_REPOSITORIES_ERROR,
         payload: errorMessage,
       });
     }

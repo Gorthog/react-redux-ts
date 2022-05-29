@@ -37,23 +37,19 @@ const repositoriesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(searchRepositories.fulfilled, (state, action) => {
-      state.loading = false;
-      state.error = undefined;
-      state.data = action.payload;
+      return { loading: false, error: undefined, data: action.payload };
     });
     builder.addCase(searchRepositories.rejected, (state, action) => {
+      let error;
       if (action.payload) {
-        state.error = action.payload.message;
+        error = action.payload.message;
       } else {
-        state.error = action.error.message;
+        error = action.error.message;
       }
-      state.loading = false;
-      state.data = [];
+      return { loading: false, error, data: [] };
     });
-    builder.addCase(searchRepositories.pending, (state) => {
-      state.loading = true;
-      state.error = undefined;
-      state.data = [];
+    builder.addCase(searchRepositories.pending, () => {
+      return { loading: true, error: undefined, data: [] };
     });
   },
 });
